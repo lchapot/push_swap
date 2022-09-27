@@ -6,24 +6,86 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:06:51 by lchapot           #+#    #+#             */
-/*   Updated: 2022/09/27 14:43:06 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:42:37 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	ft_creapile(Pile **p_pile, int X)
+void	ft_algo(Pile **pileA, Pile **pileB)
 {
-	Pile *pnew = malloc(sizeof *pnew);
+	
+}
+
+char	**ft_ajoutpile(Pile **p_pile, int X, Pile *pnew)
+{
 	if (pnew != NULL)
 	{
 		pnew->valeur = X;
 		pnew->previous = *p_pile;
 		*p_pile = pnew;
 	}
+	return (pnew);
 }
-// ajout dun elmt pnew en haut de la pile p_pile
 
+void	ft_pileclear(Pile **p_pile)
+{
+	while (*p_pile != NULL)
+		pile_rmv(p_pile);
+	free(p_pile), p_pile = NULL;
+}
+
+char	*ft_creapile(char **argc, int argv)
+{
+	Pile *pnew = malloc(sizeof *pnew);
+	while (argc[argv])
+	{
+		pnew = ft_ajoutpile(pnew, argc[argv], pnew);
+		argv--;
+	}
+	return(pnew);
+}
+
+int	ft_doublon(char **argc, int tmp, int start)
+{
+	while (argc[start])
+	{
+		if (argc[start] == tmp)
+			return (1);
+		start++;
+	}
+	return (0);
+}
+
+int	main(int argv, char **argc)
+{
+	int	tmp;
+	int	i;
+	Pile **pileA;
+	Pile **pileB;
+	
+	tmp = 0;
+	i = 0;
+	while (argc[i])
+	{
+		tmp = argc[i];
+		if((int)argc[i]%1 != 0 || ft_doublon(**argc, tmp, i+1) == 1)
+		{
+			write(2, "Error\n", 6);
+			return (0);
+		}
+		i++;
+	}
+	pileA = ft_creapile(argc, argv);
+	pileB = ft_creapile(NULL, 0);
+	ft_algo(pileA, pileB);
+	ft_pileclear(pileA);
+	ft_pileclear(pileB);	
+	return (0);
+}
+
+
+/*
 int	pile_rmv(Pile **p_pile)
 {
 	int ret;
@@ -39,13 +101,6 @@ return (ret);
 }
 //retrait du dernier elmt de p_pile
 
-void	pileclear(Pile **p_pile)
-{
-	while (*p_pile != NULL)
-		pile_rmv(p_pile);
-}
-//vide tte la pile
-
 int	pile_peek(Pile *p_pile)
 {
 	int ret = -1;
@@ -56,5 +111,5 @@ int	pile_peek(Pile *p_pile)
 	}
 	return ret;
 }
-
-//donne la valeur du sommet, -1 si c vide;
+valeur au sommet:::;;;;
+*/
