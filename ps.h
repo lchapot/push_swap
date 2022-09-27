@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:07:10 by lchapot           #+#    #+#             */
-/*   Updated: 2022/09/26 18:25:26 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/09/27 18:25:52 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 # define PS_H
 
 # include <stdlib.h>
+# include <stdarg.h>
 # include <unistd.h>
 
 typedef struct pile
 {
-	int	valeur;
-	struct pile *previous;
+	int		valeur;
 	struct pile *next;
-}	Pile;
+}			Pile;
 
 ft_sa();
 ft_sb();

@@ -6,16 +6,11 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:06:51 by lchapot           #+#    #+#             */
-/*   Updated: 2022/09/27 17:42:37 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/09/27 18:20:43 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
-
-void	ft_algo(Pile **pileA, Pile **pileB)
-{
-	
-}
 
 char	**ft_ajoutpile(Pile **p_pile, int X, Pile *pnew)
 {
@@ -83,6 +78,8 @@ int	main(int argv, char **argc)
 	ft_pileclear(pileB);	
 	return (0);
 }
+
+
 
 
 /*

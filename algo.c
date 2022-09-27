@@ -6,15 +6,13 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:10:13 by lchapot           #+#    #+#             */
-/*   Updated: 2022/09/27 17:44:26 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/09/27 18:19:01 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	ft_algo(int x)
+void	ft_algo(Pile **pileA, Pile **pileB)
 {
-	char *nom;
-	nom = "jadore lalgo"
-	ft_printf("%s", nom);
+	
 }
