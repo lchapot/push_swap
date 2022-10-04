@@ -6,81 +6,65 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:07:02 by lchapot           #+#    #+#             */
-/*   Updated: 2022/09/27 18:23:37 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/09/28 18:00:20 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ps.h"
-
-int	ft_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-int	ft_putstr(char *str)
-{
-	int	len;
-
-	len = 0;
-	if (!str)
-	{
-		write(1, "(null)", 6);
-		len = 6;
-		return (len);
-	}
-	while (*str)
-	{
-		write(1, str, 1);
-		str++;
-		len++;
-	}
-	return (len);
-}
+#include "ps.h"
 
 void	ft_sa(Pile **pileA, Pile **pileB)
 {
+	if (!pileA || !pileB)
+		return (0);
 	write(1, "sa\n", 3);
-		
 }
 
 void	ft_sb(Pile **pileA, Pile **pileB)
 {
+	if (!pileA || !pileB)
+		return (0);
+	else
+	
 	write(1, "sb\n", 3);
 }
 
 	ft_ss(Pile **pileA, Pile **pileB)
 {
+	ft_sb(pileA, pileB);
+	ft_sa(pileA, pileB);
 	write(1, "ss\n", 3);
-	
 }	
 
 	ft_pa(Pile **pileA, Pile **pileB)
 {
-	write(1, "pa\n", 3);
-	
+	if (!pileB)
+		return (0);
+	write(1, "pa\n", 3);	
 }
 
 	ft_pb(Pile **pileA, Pile **pileB)
 {
+	if (!pileA)
+		return (0);
 	write(1, "pb\n", 3);
-	
 }
 
 	ft_ra(Pile **pileA, Pile **pileB)
 {
+	//dernier eleemt doit pointer sur e premier et le premier pointer sur rien//
 	write(1, "ra\n", 3);
-	
 }
 
 	ft_rb(Pile **pileA, Pile **pileB)
 {
 	write(1, "rb\n", 3);
-	
 }
+
 	ft_rr(Pile **pileA, Pile **pileB)
 {
+	ft_rb(pileA, pileB);
+	ft_ra(pileA, pileB);
 	write(1, "rr\n", 3);
-	
 }
 
 	ft_rra(Pile **pileA, Pile **pileB)
@@ -97,6 +81,7 @@ void	ft_sb(Pile **pileA, Pile **pileB)
 
 	ft_rrr(Pile **pileA, Pile **pileB)
 {
+	ft_rra(pileA, pileB);
+	ft_rrb(pileA, pileB);
 	write(1, "rrr\n", 3);
-	
 }

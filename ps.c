@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:06:51 by lchapot           #+#    #+#             */
-/*   Updated: 2022/09/27 18:20:43 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/09/28 16:10:22 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,30 @@ int	main(int argv, char **argc)
 	
 	tmp = 0;
 	i = 0;
+	pileA = malloc(sizeof(Pile));
+	pileB = malloc(sizeof(Pile));
+	if(!pileA || !pileB)
+		return (0);
+		// faire un atoi de la liste, si pas possible return error//
 	while (argc[i])
 	{
 		tmp = argc[i];
 		if((int)argc[i]%1 != 0 || ft_doublon(**argc, tmp, i+1) == 1)
 		{
 			write(2, "Error\n", 6);
+			ft_pileclear(pileA);
+			ft_pileclear(pileB);
 			return (0);
 		}
 		i++;
 	}
 	pileA = ft_creapile(argc, argv);
-	pileB = ft_creapile(NULL, 0);
+	*pileB = NULL;
 	ft_algo(pileA, pileB);
 	ft_pileclear(pileA);
 	ft_pileclear(pileB);	
 	return (0);
 }
-
-
 
 
 /*

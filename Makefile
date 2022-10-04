@@ -2,13 +2,12 @@ NAME	= ps.a
 
 FLAGS	= -Wall -Werror -Wextra
 
-
 SRCS	= 	ps_supp.c \
 			ps.c \
 			ft_printf.c \
 			algo.c \
 
-OBJS	= $(SRC:.c=.o)
+OBJS	= $(SRCS:.c=.o)
 
 RM		= rm -rf 
 
