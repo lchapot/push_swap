@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps.h                                               :+:      :+:    :+:   */
+/*   ps_supp2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/26 16:07:10 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/11 13:48:39 by lchapot          ###   ########.fr       */
+/*   Created: 2022/10/11 13:31:57 by lchapot           #+#    #+#             */
+/*   Updated: 2022/10/11 15:32:43 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_H
+#include "ps.h"
 
-# define PS_H
-
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
-
-typedef struct pile
+int	ft_atoi(char *str)
 {
-	int		valeur;
-	struct pile *next;
-}			Pile;
+	int	i;
+	int res;
 
-int		ft_atoi(char *str);
-void	ft_sa(Pile **pileA, Pile **pileB);
-void	ft_sb(Pile **pileA, Pile **pileB);
-	ft_ss(Pile **pileA, Pile **pileB);
-ft_pa();
-ft_pb();
-ft_ra();
-ft_rb();
-ft_rr();
-ft_rra();
-ft_rrb();
-ft_rrr();
-
-#endif
+	i = 0;
+	res = 0;
+	while (str[i] > 47 && str[i] < 58)
+	{
+		res = res * 10 + str[i] - 48;
+		i++;
+	}
+	if (res < -32767 || res > 32767)
+		return (33000);
+	return (res);
+}

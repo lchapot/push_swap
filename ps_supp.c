@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:07:02 by lchapot           #+#    #+#             */
-/*   Updated: 2022/09/28 18:00:20 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/11 13:48:00 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_sb(Pile **pileA, Pile **pileB)
 
 	ft_ra(Pile **pileA, Pile **pileB)
 {
-	//dernier eleemt doit pointer sur e premier et le premier pointer sur rien//
+	//dernier eleemt doit pointer sur le premier et le premier pointer sur rien//
 	write(1, "ra\n", 3);
 }
 
