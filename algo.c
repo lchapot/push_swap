@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:10:13 by lchapot           #+#    #+#             */
-/*   Updated: 2022/09/27 18:19:01 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/17 16:50:31 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,13 @@
 
 void	ft_algo(Pile **pileA, Pile **pileB)
 {
-	
+	if n <= 100;
+	if n <= 500; 
 }
+
+void	ft_little()
+{
+	if n < 3;
+	if n , 5;
+}
+/* argc*/
