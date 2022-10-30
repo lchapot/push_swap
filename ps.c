@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:06:51 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/30 19:01:31 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/30 19:03:06 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	pileA = ft_creapile(ac, str);
-	*pileB = NULL;
+	*pileB = NULL; //creer pileB que si on utilise push//
 	ft_algo(pileA, pileB);
 	ft_pileclear(pileA);
 	ft_pileclear(pileB);	
