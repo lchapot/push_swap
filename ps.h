@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:07:10 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/30 19:01:09 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/30 19:07:41 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,15 @@ typedef struct pile
 }			Pile;
 
 long	ft_atoi(char *str);
-void	ft_sa(Pile **pileA);
-void	ft_sb(Pile **pileB);
-	ft_ss(Pile **pileA, Pile **pileB);
-ft_pa();
-ft_pb();
-ft_ra();
-ft_rb();
-ft_rr();
-ft_rra();
-ft_rrb();
-ft_rrr();
-
+// void	ft_sa(Pile **pileA);
+// void	ft_sb(Pile **pileB);
+// 	ft_ss(Pile **pileA, Pile **pileB);
+// ft_pa();
+// ft_pb();
+// ft_ra();
+// ft_rb();
+// ft_rr();
+// ft_rra();
+// ft_rrb();
+// ft_rrr();
 #endif

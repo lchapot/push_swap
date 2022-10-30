@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:07:02 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/30 19:00:40 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/30 19:07:46 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,18 +110,3 @@ void	ft_sb(Pile **pileB)
 	ft_rrb(pileB);
 	write(1, "rrr\n", 3);
 }
-
-/* suppr pile B ?
-int	pile_rmv(Pile **p_pile)
-{
-	int ret;
-	ret = -1;
-if (*p_pile != NULL)
-{
-	Pile *tmp = (*p_pile)->previous; //avant dernier elmt stocke ici
-	ret = (*p_pile)->valeur;
-	free(*p_pile), *p_pile = NULL;
-	*p_pile = tmp;
-}
-return (ret);
-}*/
