@@ -6,74 +6,99 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:07:02 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/11 13:48:00 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/30 19:00:40 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	ft_sa(Pile **pileA, Pile **pileB)
+void	ft_sa(Pile **pileA)
 {
-	if (!pileA || !pileB)
-		return (0);
+	// if (!pileA)
+	// 	return (0);
+	int	*tmp;
+	int	*tmp2;
+	
+	tmp = *pileA;
+	tmp2= *pileA->next;
+	tmp->next = tmp2->next;
+	tmp2->next = *pileA;
+	*pileA = tmp2;	
+	//si ca vient de ft_ss pas print//
 	write(1, "sa\n", 3);
 }
 
-void	ft_sb(Pile **pileA, Pile **pileB)
+void	ft_sb(Pile **pileB)
 {
-	if (!pileA || !pileB)
-		return (0);
-	else
+	int	*tmp;
+	int	*tmp2;
 	
+	tmp = *pileB;
+	tmp2= *pileB->next;
+	tmp->next = tmp2->next;
+	tmp2->next = *pileB;
+	*pileB = tmp2;	
+	//si ca vient de ft_ss pas print//
 	write(1, "sb\n", 3);
 }
 
 	ft_ss(Pile **pileA, Pile **pileB)
 {
-	ft_sb(pileA, pileB);
-	ft_sa(pileA, pileB);
+	//if sb printsb if sa printsa if ss printss//
+	ft_sb(pileB);
+	ft_sa(pileA);
 	write(1, "ss\n", 3);
 }	
 
-	ft_pa(Pile **pileA, Pile **pileB)
-{
-	if (!pileB)
-		return (0);
-	write(1, "pa\n", 3);	
-}
 
-	ft_pb(Pile **pileA, Pile **pileB)
-{
-	if (!pileA)
-		return (0);
-	write(1, "pb\n", 3);
-}
+// 	ft_pa(Pile **pileA, Pile **pileB)
+// {
+// 	if (!pileB)
+// 		return (0);
+// 	write(1, "pa\n", 3);	
+// }
 
-	ft_ra(Pile **pileA, Pile **pileB)
+// 	ft_pb(Pile **pileA, Pile **pileB)
+// {
+// 	if (!pileA)
+// 		return (0);
+// 	write(1, "pb\n", 3);
+// }
+
+	ft_ra(Pile **pileA)
 {
-	//dernier eleemt doit pointer sur le premier et le premier pointer sur rien//
+	int *tmp;
+	int *tmp2;
+	while (pileA->next)
+		tmp = pileA->next;
 	write(1, "ra\n", 3);
 }
 
-	ft_rb(Pile **pileA, Pile **pileB)
+	ft_rb(Pile **pileB)
 {
 	write(1, "rb\n", 3);
 }
 
 	ft_rr(Pile **pileA, Pile **pileB)
 {
-	ft_rb(pileA, pileB);
-	ft_ra(pileA, pileB);
+	ft_rb(pileB);
+	ft_ra(pileA);
 	write(1, "rr\n", 3);
 }
 
-	ft_rra(Pile **pileA, Pile **pileB)
+	ft_rra(Pile **pileA)
 {
+	tmp;
+	tmp2;
+
+	while(tmp->next->next)
+		tmp = tmp->next;
+	tmp->next = *pileA;
+	*pileA = tmp2;
 	write(1, "rra\n", 3);
-	
 }
 
-	ft_rrb(Pile **pileA, Pile **pileB)
+	ft_rrb(Pile **pileB)
 {
 	write(1, "rrb\n", 3);
 	
@@ -81,7 +106,22 @@ void	ft_sb(Pile **pileA, Pile **pileB)
 
 	ft_rrr(Pile **pileA, Pile **pileB)
 {
-	ft_rra(pileA, pileB);
-	ft_rrb(pileA, pileB);
+	ft_rra(pileA);
+	ft_rrb(pileB);
 	write(1, "rrr\n", 3);
 }
+
+/* suppr pile B ?
+int	pile_rmv(Pile **p_pile)
+{
+	int ret;
+	ret = -1;
+if (*p_pile != NULL)
+{
+	Pile *tmp = (*p_pile)->previous; //avant dernier elmt stocke ici
+	ret = (*p_pile)->valeur;
+	free(*p_pile), *p_pile = NULL;
+	*p_pile = tmp;
+}
+return (ret);
+}*/

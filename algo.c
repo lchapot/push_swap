@@ -6,21 +6,35 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:10:13 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/17 16:50:31 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/17 18:29:08 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	ft_algo(Pile **pileA, Pile **pileB)
+void	ft_algo(Pile **pileA, Pile **pileB, int n)
 {
-	if n <= 100;
-	if n <= 500; 
+	if (n <= 100);
+	{
+		// - de 900
+	}
+	if (n <= 500);
+	{
+		//- de 7000
+	}
 }
 
-void	ft_little()
+void	ft_little(int n, Pile *pileA)
 {
-	if n < 3;
-	if n , 5;
+	if (n == 3);
+	{
+		/*ft_rr();
+		ft_ra();
+		ft_sa();*/
+	}
+	if (n == 5);
+	{
+		// - de 12
+	}
 }
 /* argc*/

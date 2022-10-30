@@ -6,25 +6,31 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:31:57 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/11 15:32:43 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/30 16:56:41 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-int	ft_atoi(char *str)
+long	ft_atoi(char *str)
 {
-	int	i;
-	int res;
+	long	i;
+	long	sign;
+	long	result;
 
 	i = 0;
-	res = 0;
-	while (str[i] > 47 && str[i] < 58)
+	sign = 1;
+	result = 0;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		res = res * 10 + str[i] - 48;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	if (res < -32767 || res > 32767)
-		return (33000);
-	return (res);
-}
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - 48;
+		i++;
+	}
+	return (sign * result);
+

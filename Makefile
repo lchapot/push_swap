@@ -3,9 +3,9 @@ NAME	= ps.a
 FLAGS	= -Wall -Werror -Wextra
 
 SRCS	= 	ps_supp.c \
-			ps.c \
-			ft_printf.c \
+			ps_supp2.c \
 			algo.c \
+			ps.c \
 
 OBJS	= $(SRCS:.c=.o)
 

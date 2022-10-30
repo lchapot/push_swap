@@ -6,22 +6,35 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:06:51 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/17 16:53:02 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/30 19:01:31 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-char	**ft_ajoutpile(Pile **p_pile, int X, Pile *pnew)
+int	ft_alreadysorted(char *str)
 {
-	if (pnew != NULL)
+	int	i;
+	i = 0;
+	while (str[i])
 	{
-		pnew->valeur = X;
-		// pnew->previous = *p_pile;
-		*p_pile = pnew;
-	} 
-	return (pnew);
+		if (str[i] > str[i+1])
+			return (0);
+		i++;
+	}
+	return (1);
 }
+
+// char	**ft_ajoutpile(Pile **p_pile, int X, Pile *pnew)
+// {
+// 	if (pnew != NULL)
+// 	{
+// 		pnew->valeur = X;
+// 		// pnew->previous = *p_pile;
+// 		*p_pile = pnew;
+// 	} 
+// 	return (pnew);
+// }
 
 void	ft_pileclear(Pile **p_pile)
 {
@@ -77,11 +90,18 @@ int	main(int ac, char **av)
 			ft_pileclear(pileB);
 			return (0);
 		}
-		if (ft_atoi(av[i] != 33000))
-			str[i] = ft_atoi(av[i]);
+		if (ft_atoi(str[i]) >= -2147483648 && ft_atoi(str[i]) <= 2147483647)
+			i++;
+		else
+			return (0);
 		i++;
 	}
 	str[i+1] = '\0';
+	if (ft_alreadysorted(str) == 0)
+	{
+		printf("\n%s\n", "@@@@@ already sorted @@@@@");
+		return (0);
+	}
 	pileA = ft_creapile(ac, str);
 	*pileB = NULL;
 	ft_algo(pileA, pileB);
@@ -91,30 +111,22 @@ int	main(int ac, char **av)
 }
 
 /*
-int	pile_rmv(Pile **p_pile)
-{
-	int ret;
-	ret = -1;
-if (*p_pile != NULL)
-{
-	Pile *tmp = (*p_pile)->previous; //avant dernier elmt stocke ici
-	ret = (*p_pile)->valeur;
-	free(*p_pile), *p_pile = NULL;
-	*p_pile = tmp;
-}
-return (ret);
-}
-//retrait du dernier elmt de p_pile
+Step 1 : Parsing, put numbers in the stack A if no errors are detected
 
-int	pile_peek(Pile *p_pile)
-{
-	int ret = -1;
-	
-	if (p_pile != NULL)
-	{
-		ret = p_pile->valeur;
-	}
-	return ret;
-}
-valeur au sommet:::;;;;
+Step 2 : Check if the numbers in A are all sorted. If so, end the program without printing anything. It’d be preferable to write a function A_is_sorted()
+
+Step 3 : If the size of A ≤ 5, call function sort_small_stack(). Else, call function sort_big_stack()
+
+
+4 5 9 7
+->
+4
+5
+9
+7
+pb pb sa pa pa ->
+4
+5
+7
+9
 */

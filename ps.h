@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:07:10 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/11 13:48:39 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/30 19:01:09 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct pile
 {
 	int		valeur;
+	int		index;
 	struct pile *next;
 }			Pile;
 
-int		ft_atoi(char *str);
-void	ft_sa(Pile **pileA, Pile **pileB);
-void	ft_sb(Pile **pileA, Pile **pileB);
+long	ft_atoi(char *str);
+void	ft_sa(Pile **pileA);
+void	ft_sb(Pile **pileB);
 	ft_ss(Pile **pileA, Pile **pileB);
 ft_pa();
 ft_pb();
