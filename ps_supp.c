@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:07:02 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/30 19:07:46 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/10/30 19:46:29 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ void	ft_sb(Pile **pileB)
 {
 	int *tmp;
 	int *tmp2;
+	
+	tmp = *pileA;
+	tmp->next= NULL;
 	while (pileA->next)
 		tmp = pileA->next;
 	write(1, "ra\n", 3);
@@ -76,6 +79,9 @@ void	ft_sb(Pile **pileB)
 
 	ft_rb(Pile **pileB)
 {
+	int	i;
+
+	i = 0;
 	write(1, "rb\n", 3);
 }
 
@@ -88,25 +94,24 @@ void	ft_sb(Pile **pileB)
 
 	ft_rra(Pile **pileA)
 {
-	tmp;
-	tmp2;
+	int *tmp;
+	int *tmp2;
 
 	while(tmp->next->next)
 		tmp = tmp->next;
 	tmp->next = *pileA;
 	*pileA = tmp2;
-	write(1, "rra\n", 3);
+	write(1, "rra\n", 4);
 }
 
-	ft_rrb(Pile **pileB)
+void	ft_rrb(Pile **pileB)
 {
-	write(1, "rrb\n", 3);
-	
+	write(1, '\n', 1);
 }
 
 	ft_rrr(Pile **pileA, Pile **pileB)
 {
 	ft_rra(pileA);
 	ft_rrb(pileB);
-	write(1, "rrr\n", 3);
+	write(1, "rrr\n", 4);
 }
