@@ -6,40 +6,38 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:07:02 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/30 19:46:29 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:22:02 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	ft_sa(Pile **pileA)
+int	ft_sa(Pile **pileA)
 {
-	// if (!pileA)
-	// 	return (0);
-	int	*tmp;
-	int	*tmp2;
+	Pile	*tmp;
+	Pile	*tmp2;
 	
 	tmp = *pileA;
 	tmp2= *pileA->next;
 	tmp->next = tmp2->next;
 	tmp2->next = *pileA;
 	*pileA = tmp2;	
-	//si ca vient de ft_ss pas print//
 	write(1, "sa\n", 3);
+	return (0);
 }
 
-void	ft_sb(Pile **pileB)
+int	ft_sb(Pile **pileB)
 {
-	int	*tmp;
-	int	*tmp2;
+	Pile	*tmp;
+	Pile	*tmp2;
 	
 	tmp = *pileB;
-	tmp2= *pileB->next;
+	tmp2= **pileB->next;
 	tmp->next = tmp2->next;
 	tmp2->next = *pileB;
 	*pileB = tmp2;	
-	//si ca vient de ft_ss pas print//
 	write(1, "sb\n", 3);
+	return (0);
 }
 
 	ft_ss(Pile **pileA, Pile **pileB)
@@ -49,7 +47,6 @@ void	ft_sb(Pile **pileB)
 	ft_sa(pileA);
 	write(1, "ss\n", 3);
 }	
-
 
 // 	ft_pa(Pile **pileA, Pile **pileB)
 // {
@@ -65,24 +62,26 @@ void	ft_sb(Pile **pileB)
 // 	write(1, "pb\n", 3);
 // }
 
-	ft_ra(Pile **pileA)
+int	ft_ra(Pile **pileA)
 {
-	int *tmp;
-	int *tmp2;
+	Pile *tmp;
+	Pile *tmp2;
 	
 	tmp = *pileA;
 	tmp->next= NULL;
 	while (pileA->next)
 		tmp = pileA->next;
 	write(1, "ra\n", 3);
+	return (0);
 }
 
-	ft_rb(Pile **pileB)
+int	ft_rb(Pile **pileB)
 {
 	int	i;
 
 	i = 0;
 	write(1, "rb\n", 3);
+	return (0);
 }
 
 	ft_rr(Pile **pileA, Pile **pileB)
@@ -92,21 +91,35 @@ void	ft_sb(Pile **pileB)
 	write(1, "rr\n", 3);
 }
 
-	ft_rra(Pile **pileA)
+int	ft_rra(Pile **pileA)
 {
-	int *tmp;
-	int *tmp2;
+	Pile *tmp;
+	Pile *tmp2;
 
+	tmp = *pileA;
 	while(tmp->next->next)
 		tmp = tmp->next;
-	tmp->next = *pileA;
+	tmp2 = tmp->next;
+	tmp->next = NULL;
+	tmp2->next = *pileA;
 	*pileA = tmp2;
 	write(1, "rra\n", 4);
+	return (0);
 }
 
-void	ft_rrb(Pile **pileB)
+int	ft_rrb(Pile **pileB)
 {
-	write(1, '\n', 1);
+	Pile *tmp;
+	Pile *tmp2;
+	tmp = *pileB;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	tmp2 = tmp->next;
+	tmp->next = NULL;
+	tmp2->next = *pileB;
+	*pile B = tmp2;
+	write(1, 'rrb\n', 4);
+	return (0);
 }
 
 	ft_rrr(Pile **pileA, Pile **pileB)
