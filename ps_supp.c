@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:07:02 by lchapot           #+#    #+#             */
-/*   Updated: 2022/11/21 17:22:02 by lchapot          ###   ########.fr       */
+/*   Updated: 2022/11/21 18:43:40 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_sa(Pile **pileA)
 	Pile	*tmp2;
 	
 	tmp = *pileA;
-	tmp2= *pileA->next;
+	tmp2= pileA->next;
 	tmp->next = tmp2->next;
 	tmp2->next = *pileA;
 	*pileA = tmp2;	
@@ -32,7 +32,7 @@ int	ft_sb(Pile **pileB)
 	Pile	*tmp2;
 	
 	tmp = *pileB;
-	tmp2= **pileB->next;
+	tmp2= pileB->next;
 	tmp->next = tmp2->next;
 	tmp2->next = *pileB;
 	*pileB = tmp2;	
@@ -69,8 +69,8 @@ int	ft_ra(Pile **pileA)
 	
 	tmp = *pileA;
 	tmp->next= NULL;
-	while (pileA->next)
-		tmp = pileA->next;
+	while (tmp->next)
+		tmp = tmp->next;
 	write(1, "ra\n", 3);
 	return (0);
 }
@@ -111,13 +111,14 @@ int	ft_rrb(Pile **pileB)
 {
 	Pile *tmp;
 	Pile *tmp2;
+	
 	tmp = *pileB;
 	while (tmp->next->next)
 		tmp = tmp->next;
 	tmp2 = tmp->next;
 	tmp->next = NULL;
 	tmp2->next = *pileB;
-	*pile B = tmp2;
+	*pile B = tmp2->next;
 	write(1, 'rrb\n', 4);
 	return (0);
 }
