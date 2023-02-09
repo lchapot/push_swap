@@ -6,7 +6,7 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:06:51 by lchapot           #+#    #+#             */
-/*   Updated: 2022/10/30 19:03:06 by lchapot          ###   ########.fr       */
+/*   Updated: 2023/02/09 17:21:26 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,6 @@ void	ft_pileclear(Pile **p_pile)
 	free(p_pile), p_pile = NULL;
 }
 
-char	*ft_creapile(int argv, char **av)
-{
-	Pile *pnew = malloc(sizeof *pnew);
-	while (av[argv])
-	{
-		pnew = ft_ajoutpile(pnew, av[argv], pnew);
-		argv--;
-	}
-	return(pnew);
-}
 
 int	ft_doublon(char **av, int tmp, int start)
 {
