@@ -2,10 +2,13 @@ NAME	= ps.a
 
 FLAGS	= -Wall -Werror -Wextra
 
-SRCS	= 	ps_supp.c \
-			ps_supp2.c \
-			algo.c \
-			ps.c \
+SRCS	=	ps.c \
+			lst.c \
+		 	psup.c \
+			radix.c \
+			fctuti.c \
+			parsing.c \
+			sortmini.c \
 
 OBJS	= $(SRCS:.c=.o)
 

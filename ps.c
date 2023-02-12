@@ -6,117 +6,88 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 16:06:51 by lchapot           #+#    #+#             */
-/*   Updated: 2023/02/09 17:21:26 by lchapot          ###   ########.fr       */
+/*   Updated: 2023/02/12 19:33:20 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-int	ft_alreadysorted(char *str)
+int	parse(int ac, char **av)
 {
-	int	i;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] > str[i+1])
-			return (0);
-		i++;
-	}
-	return (1);
+	Pile	*stack;
+
+	if (!is_arg_valid(av))
+		return (write(2, "Error\n", 6), 0);
+	if (ac <= 2)
+		return (0);
+	stack = iniPile(ac, av);
+	if (!find_duplicate(stack))
+		return (free_list(&stack), write(2, "Error\n", 6), 0);
+	if (!is_sort(stack))
+		return (free_list(&stack), 0);
+	return (free_list(&stack), 1);
 }
 
-// char	**ft_ajoutpile(Pile **p_pile, int X, Pile *pnew)
-// {
-// 	if (pnew != NULL)
-// 	{
-// 		pnew->valeur = X;
-// 		// pnew->previous = *p_pile;
-// 		*p_pile = pnew;
-// 	} 
-// 	return (pnew);
-// }
-
-void	ft_pileclear(Pile **p_pile)
+void	print_index(Pile **lst)
 {
-	while (*p_pile != NULL)
-		pile_rmv(p_pile);
-	free(p_pile), p_pile = NULL;
+	Pile	*ptr;
+
+	if (!lst || !*lst)
+		return ;
+	ptr = *lst;
+	while (ptr)
+	{
+		printf("%i\n", ptr->index);
+		ptr = ptr->next;
+	}
+	printf("\n");
 }
 
-
-int	ft_doublon(char **av, int tmp, int start)
+void	prinpile(Pile **lst)
 {
-	while (av[start])
+	Pile	*tmp;
+
+	if (!*lst || !lst)
+		return ;
+	printf("\n");
+	tmp = *lst;
+	while (tmp)
 	{
-		if (av[start] == tmp)
-			return (1);
-		start++;
+		printf("%i\n", tmp->valeur);
+		tmp = tmp->next;
 	}
-	return (0);
+	printf("\n");
+}
+
+void	ft_putendl_fd(char *str, int fd)
+{
+	while (*str)
+	{
+		write(1, str, fd);
+		str++;
+	}
+	write(1, "\n", fd);
 }
 
 int	main(int ac, char **av)
 {
-	int	tmp;
-	int	i;
-	Pile **pileA;
-	Pile **pileB;
-	char *str;
+	Pile	**stack_a;
+	Pile	**stack_b;
 
-	tmp = 0;
-	i = 0;
-	str = malloc(sizeof(int) * ac+ 1);
-	pileA = malloc(sizeof(Pile));
-	pileB = malloc(sizeof(Pile));
-	if(!pileA || !pileB)
+	if (!parse(ac, av))
 		return (0);
-	while (av[i])
-	{
-		tmp = av[i];
-		if(ft_doublon(**av, tmp, i+1) == 1)
-		{
-			write(2, "Error\n", 6);
-			ft_pileclear(pileA);
-			ft_pileclear(pileB);
-			return (0);
-		}
-		if (ft_atoi(str[i]) >= -2147483648 && ft_atoi(str[i]) <= 2147483647)
-			i++;
-		else
-			return (0);
-		i++;
-	}
-	str[i+1] = '\0';
-	if (ft_alreadysorted(str) == 0)
-	{
-		printf("\n%s\n", "@@@@@ already sorted @@@@@");
+	stack_a = malloc(sizeof(Pile));
+	stack_b = malloc(sizeof(Pile));
+	if (!stack_a || !stack_b)
 		return (0);
-	}
-	pileA = ft_creapile(ac, str);
-	*pileB = NULL; //creer pileB que si on utilise push//
-	ft_algo(pileA, pileB);
-	ft_pileclear(pileA);
-	ft_pileclear(pileB);	
+	*stack_a = iniPile(ac, av);
+	*stack_b = NULL;
+	if (ft_lstsize(*stack_a) <= 5)
+		sort_small(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
+	free_list(stack_a);
+	free(stack_a);
+	free(stack_b);
 	return (0);
 }
-
-/*
-Step 1 : Parsing, put numbers in the stack A if no errors are detected
-
-Step 2 : Check if the numbers in A are all sorted. If so, end the program without printing anything. It’d be preferable to write a function A_is_sorted()
-
-Step 3 : If the size of A ≤ 5, call function sort_small_stack(). Else, call function sort_big_stack()
-
-
-4 5 9 7
-->
-4
-5
-9
-7
-pb pb sa pa pa ->
-4
-5
-7
-9
-*/

@@ -6,96 +6,74 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:03:19 by lchapot           #+#    #+#             */
-/*   Updated: 2023/02/09 18:22:57 by lchapot          ###   ########.fr       */
+/*   Updated: 2023/02/12 17:18:05 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-int	radix()
+void	indexing(Pile *list)
 {
-	int	i;
+	Pile	*travel;
+	Pile	*head;
+
+	head = list;
+	while (list)
+	{
+		travel = head;
+		list->index = 0;
+		while (travel)
+		{
+			if (list->valeur > travel->valeur)
+				list->index += 1;
+			travel = travel->next;
+		}
+		list = list->next;
+	}
+}
+
+int	find_index(Pile *stack, int x)
+{
+	int		i;
+	Pile	*travel;
 
 	i = 0;
-	
-	return (0);
-}
-
-long	ft_atoi(char *str)
-{
-	long	i;
-	long	sign;
-	long	result;
-
-	i = 0;
-	sign = 1;
-	result = 0;
-	if (str[i] == '+' || str[i] == '-')
+	travel = stack;
+	while (travel && travel->index != x)
 	{
-		if (str[i] == '-')
-			sign = -1;
 		i++;
+		travel = travel->next;
 	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + str[i] - 48;
-		i++;
-	}
-	return (sign * result);
+	return (i);
 }
 
-void	indexation(int av, int ac)
+int	get_max_bits(Pile **stack)
 {
-	int	i;
+	Pile	*head;
+	int		max;
+	int		max_bits;
 
-	i = 0;
-	while(i<ac)
+	head = *stack;
+	max = head->index;
+	max_bits = 0;
+	while (head)
 	{
-		compare and give a nbr between 0 and ac;
-		i++;
+		if (head->index > max)
+			max = head->index;
+		head = head->next;
 	}
-	nouvelle liste simplifiee -> go binaire;
+	while ((max >> max_bits) != 0)
+		max_bits++;
+	return (max_bits);
 }
 
-int decimaltobinaire(int nb, t_list **pileA)
+void	radix_sort(Pile **pileA, Pile **pileB)
 {
-	int tab[get_max_bits(pileA)];
-	int	i;
-	int res;
-	
-	res = 0;
-	i = 0;
-	while (nb > 0)
-	{
-		tab[i] = nb%2;
-		nb = nb/2;
-		i++;
-	}
-	while (i-- > 0)
-		res = res*10 + tab[i];
-	return (res);	
-}
-
-res ->> stack A;
-
-char	*ft_creapile(int argv, char **av)
-{
-	Pile *pnew = malloc(sizeof *pnew);
-	while (av[argv])
-	{
-		pnew = ft_ajoutpile(pnew, av[argv], pnew);
-		argv--;
-	}
-	return(pnew);
-}
-
- void    radix_sort(Pile **pileA, Pile **pileB)
-{
-    Pile	*head_a;
-    int		i;
-    int		j;
-    int		size;
-    int		max_bits;
+	Pile	*head_a;
+	int		i;
+	int		j;
+	int		size;
+	int		max_bits;
 
 	i = 0;
 	head_a = *pileA;
@@ -105,10 +83,10 @@ char	*ft_creapile(int argv, char **av)
 	{
 		j = 0;
 		while (j++ < size)
-        {
-    		head_a = *pileA;
-    		if (!((head_a->index >> i) & 1))
-        		push_stack(pileB, pileA, 'b');
+		{
+			head_a = *pileA;
+			if (!((head_a->index >> i) & 1))
+				push_stack(pileB, pileA, 'b');
 			else
 				rotate_stack(pileA, 'a');
 		}
@@ -117,18 +95,3 @@ char	*ft_creapile(int argv, char **av)
 		i++;
 	}
 }
-
-/* atoi;
-on les transforme en 0 1 2 3 4 5 n (n = nbr de chiffres donnes), donc indexer puis remplacer;
-passer en base 2;
-trouver le plus grand nbr pour voir cb de fois on fait le tchik tchak
-selon le nbr de digit = i;
-put it in stack A;
-
-
-faire les tchik tchak de 0 a i***; go B quand c 0 stay A qd c 1)
-print les actions
-
-*** >> and &;
-
-*/
