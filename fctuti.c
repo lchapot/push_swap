@@ -6,26 +6,26 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 16:37:50 by lchapot           #+#    #+#             */
-/*   Updated: 2023/02/12 19:28:26 by lchapot          ###   ########.fr       */
+/*   Updated: 2023/03/15 16:37:27 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-Pile	*ft_lstnew(int x, int index)
+t_pile	*ft_lstnew(int x, int i)
 {
-	Pile	*element;
+	t_pile	*element;
 
 	element = malloc(sizeof(*element));
 	if (!element)
 		return (0);
 	element->valeur = x;
-	element->index = index;
+	element->index = i;
 	element->next = 0;
 	return (element);
 }
 
-size_t	ft_lstsize(Pile *lst)
+size_t	ft_lstsize(t_pile *lst)
 {
 	size_t	i;
 
@@ -38,9 +38,9 @@ size_t	ft_lstsize(Pile *lst)
 	return (i);
 }
 
-Pile	*ft_lstlast(Pile *lst)
+t_pile	*ft_lstlast(t_pile *lst)
 {
-	Pile	*tmp;
+	t_pile	*tmp;
 
 	if (!lst)
 		return (NULL);
@@ -50,9 +50,9 @@ Pile	*ft_lstlast(Pile *lst)
 	return (tmp);
 }
 
-void	free_list(Pile **lst)
+void	free_list(t_pile **lst)
 {
-	Pile	*save;
+	t_pile	*save;
 
 	if (!*lst)
 		return ;

@@ -6,16 +6,16 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:10:13 by lchapot           #+#    #+#             */
-/*   Updated: 2023/02/12 17:13:53 by lchapot          ###   ########.fr       */
+/*   Updated: 2023/03/20 17:59:54 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	sort_2(Pile **stack, char c)
+void	sort_2(t_pile **stack, char c)
 {
-	Pile	*after;
-	Pile	*head;
+	t_pile	*after;
+	t_pile	*head;
 
 	head = *stack;
 	after = head->next;
@@ -23,13 +23,12 @@ void	sort_2(Pile **stack, char c)
 		swap_stack(*stack, c);
 }
 
-void	sort_3(Pile **stack, char c)
+void	sort_3(t_pile **stack, char c)
 {
-	Pile	*after;
-	Pile	*head;
+	t_pile	*after;
+	t_pile	*head;
 
-	sort_2(stack, 'a');
-	while (is_sort(*stack))
+	while (notsort(*stack))
 	{
 		head = *stack;
 		after = head->next;
@@ -40,7 +39,7 @@ void	sort_3(Pile **stack, char c)
 	}
 }
 
-void	sort_4(Pile **stack_a, Pile **stack_b, int x)
+void	sort_4(t_pile **stack_a, t_pile **stack_b, int x)
 {
 	if (find_index(*stack_a, x) < 2)
 	{
@@ -57,7 +56,7 @@ void	sort_4(Pile **stack_a, Pile **stack_b, int x)
 	push_stack(stack_a, stack_b, 'a');
 }
 
-void	sort_5(Pile **stack_a, Pile **stack_b)
+void	sort_5(t_pile **stack_a, t_pile **stack_b)
 {
 	if (find_index(*stack_a, 0) < 3)
 	{
@@ -74,7 +73,7 @@ void	sort_5(Pile **stack_a, Pile **stack_b)
 	push_stack(stack_a, stack_b, 'a');
 }
 
-void	sort_small(Pile **stack_a, Pile **stack_b)
+void	sortmini(t_pile **stack_a, t_pile **stack_b)
 {
 	if (ft_lstsize(*stack_a) == 2)
 		sort_2(stack_a, 'a');

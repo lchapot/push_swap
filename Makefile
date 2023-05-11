@@ -1,4 +1,4 @@
-NAME	= ps.a
+NAME	= push_swap
 
 FLAGS	= -Wall -Werror -Wextra
 
@@ -14,17 +14,18 @@ OBJS	= $(SRCS:.c=.o)
 
 RM		= rm -rf 
 
+$(NAME):	$(OBJS)
+	gcc -g3 $(SRCS) -o $@
+
 all:	$(NAME)
 
 .c.o:
-	gcc $(FLAGS) -c $< -o $(<:.c=o)
+	gcc $(FLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME):	$(OBJS)
-	ar rc $(NAME) $(OBJS)
+clean : 
+	$(RM) $(OBJS)
 
-clean : $(RM) $(OBJS)
-
-flcean : clean
+fclean : clean
 	$(RM) $(NAME)
 
 re : fclean all

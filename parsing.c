@@ -6,46 +6,11 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:31:57 by lchapot           #+#    #+#             */
-/*   Updated: 2023/02/12 16:22:40 by lchapot          ###   ########.fr       */
+/*   Updated: 2023/03/17 18:46:28 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
-
-int	is_sort(Pile	*lst)
-{
-	Pile	*after;
-
-	after = lst->next;
-	while (after && lst->valeur < after->valeur)
-	{
-		lst = after;
-		after = after->next;
-	}
-	if (!after)
-		return (0);
-	return (1);
-}
-
-int	find_duplicate(Pile *stack)
-{
-	Pile	*save;
-
-	if (!stack)
-		return (0);
-	while (stack)
-	{
-		save = stack->next;
-		while (save)
-		{
-			if (stack->valeur == save->valeur)
-				return (0);
-			save = save->next;
-		}
-		stack = stack->next;
-	}
-	return (1);
-}
 
 int	is_arg_valid(char **str)
 {
@@ -58,10 +23,10 @@ int	is_arg_valid(char **str)
 	while (str[i])
 	{
 		j = 0;
+		if (str[i][0] == '-')
+			j++;
 		while (str[i][j])
 		{
-			if (str[i][j] == '-')
-				j++;
 			if (str[i][j] < '0' || str[i][j] > '9')
 				return (0);
 			j++;
@@ -89,13 +54,13 @@ int	is_int(char **str)
 
 long	ft_atoi(char *str)
 {
-	long	sign;
-	long	res;
 	long	i;
+	long	res;
+	long	sign;
 
 	i = 0;
-	sign = 1;
 	res = 0;
+	sign = 1;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
@@ -108,4 +73,39 @@ long	ft_atoi(char *str)
 		i++;
 	}
 	return (res * sign);
+}
+
+int	duplicate(t_pile *stack)
+{
+	t_pile	*save;
+
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		save = stack->next;
+		while (save)
+		{
+			if (stack->valeur == save->valeur)
+				return (0);
+			save = save->next;
+		}
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	notsort(t_pile	*lst)
+{
+	t_pile	*save;
+
+	save = lst->next;
+	while (save && lst->valeur < save->valeur)
+	{
+		lst = save;
+		save = save->next;
+	}
+	if (!save)
+		return (0);
+	return (1);
 }

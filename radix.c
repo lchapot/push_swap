@@ -6,36 +6,36 @@
 /*   By: lchapot <lchapot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 19:03:19 by lchapot           #+#    #+#             */
-/*   Updated: 2023/02/12 17:18:05 by lchapot          ###   ########.fr       */
+/*   Updated: 2023/03/17 17:22:37 by lchapot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	indexing(Pile *list)
+void	indexing(t_pile *lst)
 {
-	Pile	*travel;
-	Pile	*head;
+	t_pile	*travel;
+	t_pile	*stay;
 
-	head = list;
-	while (list)
+	stay = lst;
+	while (lst)
 	{
-		travel = head;
-		list->index = 0;
+		travel = stay;
+		lst->index = 0;
 		while (travel)
 		{
-			if (list->valeur > travel->valeur)
-				list->index += 1;
+			if (lst->valeur > travel->valeur)
+				lst->index += 1;
 			travel = travel->next;
 		}
-		list = list->next;
+		lst = lst->next;
 	}
 }
 
-int	find_index(Pile *stack, int x)
+int	find_index(t_pile *stack, int x)
 {
 	int		i;
-	Pile	*travel;
+	t_pile	*travel;
 
 	i = 0;
 	travel = stack;
@@ -47,9 +47,9 @@ int	find_index(Pile *stack, int x)
 	return (i);
 }
 
-int	get_max_bits(Pile **stack)
+int	get_max_bits(t_pile **stack)
 {
-	Pile	*head;
+	t_pile	*head;
 	int		max;
 	int		max_bits;
 
@@ -67,25 +67,25 @@ int	get_max_bits(Pile **stack)
 	return (max_bits);
 }
 
-void	radix_sort(Pile **pileA, Pile **pileB)
+void	radix_sort(t_pile **pileA, t_pile **pileB)
 {
-	Pile	*head_a;
+	t_pile	*stay_a;
 	int		i;
 	int		j;
 	int		size;
 	int		max_bits;
 
 	i = 0;
-	head_a = *pileA;
-	size = ft_lstsize(head_a);
+	stay_a = *pileA;
+	size = ft_lstsize(stay_a);
 	max_bits = get_max_bits(pileA);
 	while (i < max_bits)
 	{
 		j = 0;
 		while (j++ < size)
 		{
-			head_a = *pileA;
-			if (!((head_a->index >> i) & 1))
+			stay_a = *pileA;
+			if (!((stay_a->index >> i) & 1))
 				push_stack(pileB, pileA, 'b');
 			else
 				rotate_stack(pileA, 'a');
